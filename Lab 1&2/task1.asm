@@ -15,6 +15,13 @@
         
         ; YOUR CODE STARTS HERE
         
+        mov ax, 25
+        mov bx, 30
+        add ax, bx
+        neg bx
+        add bx, ax
+        sub ax,bx
+        
         
         ; YOUR CODE ENDS HERE
         
