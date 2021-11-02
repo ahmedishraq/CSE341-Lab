@@ -4,7 +4,11 @@
 .STACK 100H  
 
 .DATA
-    ; DEFINE YOUR VARIABLES HERE
+    ; DEFINE YOUR VARIABLES HERE 
+    a db 5
+    b db 10
+    c db 30
+    d db 15 
 
 .CODE
     MAIN PROC
@@ -13,15 +17,15 @@
         MOV DS, AX
         
         ; YOUR CODE STARTS HERE 
-        
-        mov ax, 5
-        mov bx, 10
-        mov cx, 30
-        mov dx, 15
-        sub cx, ax ; cx = C-A
-        sub ax, cx ; ax = A-(C-A)
-        add ax, dx ; ax = A-(C-A)+D
-        mov dx, ax ; dx = A-(C-A)+D
+          
+        mov al, a
+        mov bl, b
+        mov cl, c
+        mov dl, d
+        sub cl, al ; cl = C-A
+        sub al, cl ; al = A-(C-A)
+        add al, dl ; al = A-(C-A)+D
+        mov dl, al ; dl = A-(C-A)+D
         
          
         
