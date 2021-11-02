@@ -37,9 +37,6 @@
         div cl     ;al=0, ah=6 
         
         
-        
-         
-        
         ; YOUR CODE ENDS HERE
         
         MOV AX, 4C00H
