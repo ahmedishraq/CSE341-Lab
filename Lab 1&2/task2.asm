@@ -22,10 +22,10 @@
         mov bl, b
         mov cl, c
         mov dl, d
-        sub cl, al ; cl = C-A
-        sub al, cl ; al = A-(C-A)
-        add al, dl ; al = A-(C-A)+D
-        mov dl, al ; dl = A-(C-A)+D
+        sub cl, al  ;cl = C-A
+        sub al, cl  ;al = A-(C-A)
+        add al, dl  ;al = A-(C-A)+D
+        mov dl, al  ;dl = A-(C-A)+D
         
          
         
