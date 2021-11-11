@@ -21,6 +21,13 @@
         int 21h
         mov bl, al; al-> bl=6
         
+        ;creating carriage return and line feed
+        mov ah, 2
+        mov dl, 0dh
+        int 21h
+        mov dl, 0ah
+        int 21h
+        
         ; taking input 2
         mov ah, 1
         int 21h
@@ -28,6 +35,13 @@
         ; add two inputs
         add al, bl; 6+5=11 al=11
         
+        
+        ;creating carriage return and line feed
+        mov ah, 2
+        mov dl, 0dh
+        int 21h
+        mov dl, 0ah
+        int 21h
         
         ;Print the msg
         lea cx, msg
