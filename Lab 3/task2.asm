@@ -13,7 +13,8 @@
         MOV DS, AX
         
         ; YOUR CODE STARTS HERE
-        mov ah, 1
+        
+        mov ah, 1      ;taking input
         int 21h
         mov bl, al
         
@@ -24,7 +25,7 @@
         mov dx, 0ah
         int 21h
         
-        mov al, 32
+        mov al, 32     ;subtract 32 to make the character capital
         sub bl, al
         
         mov dl, bl
