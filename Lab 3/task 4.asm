@@ -1,4 +1,3 @@
-
 .MODEL SMALL  
 
 .STACK 100H  
@@ -25,7 +24,6 @@
         mov ah, 1
         int 21h
         mov bh, al
-        sub bh, 31h
         
         ; carriage & line feed
         mov ah, 2
@@ -41,7 +39,6 @@
         mov ah, 1
         int 21h
         mov bl, al
-        sub bl, 31h
         
         ; carriage & line feed
         mov ah, 2
@@ -54,21 +51,16 @@
         mov ah, 9
         int 21h
         
-        ;testing
-         sub bh, bl
-         mov dl, bh
-         mov ah, 2
-         int 21h
         
-        ;first decimal digit
-        ;mov ah, 2
-        ;mov dl, 31h
-        ;int 21h
+        sub bh, 11h
+        sub bl, 11h
+        sub bh, bl
+        add bh, 48
         
-        ;mov ah, 2
-        ;sub bh, 11h
-        ;mov dl, bh
-        ;int 21h 
+        
+        mov dl, bh
+        mov ah, 2
+        int 21h 
          
         
         ; YOUR CODE ENDS HERE
