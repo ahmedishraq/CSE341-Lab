@@ -6,7 +6,7 @@
 .DATA
     ; DEFINE YOUR VARIABLES HERE
     
-    msg db "The result is$"
+    msg db "The result is", "$"
     
 .CODE
     MAIN PROC
@@ -15,49 +15,50 @@
         MOV DS, AX
         
         ; YOUR CODE STARTS HERE
-        
-        ; taking input 1
         mov ah, 1
         int 21h
-        mov bl, al; al-> bl=3
         
-        ;creating carriage return and line feed
-        mov ah, 2
-        mov dl, 0dh
-        int 21h
-        mov dl, 0ah
-        int 21h
+        mov bl, al
         
-        ; taking input 2
+        ; carriage & line feed
+        mov ah,2
+        mov dx, 0dh
+        int 21h
+        mov dx, 0ah
+        int 21h
+
+        
         mov ah, 1
-        int 21h  ; al=1
-        
-        ; add two inputs
-        add al, bl; 3+1=4 al=4
-        sub al, 48
-        
-        
-        ;creating carriage return and line feed
-        mov ah, 2
-        mov dl, 0dh
-        int 21h
-        mov dl, 0ah
         int 21h
         
-        ;Print the msg
-        lea cx, msg
+        mov cl, al
+ 
+        ; carriage & line feed
+        mov ah,2
+        mov dx, 0dh
+        int 21h
+        mov dx, 0ah
+        int 21h
+        
+        lea dx, msg
         mov ah, 9
         int 21h
         
-        ;creating carriage return and line feed
-        mov ah, 2
-        mov dl, 0dh
+        ; carriage & line feed
+        mov ah,2
+        mov dx, 0dh
         int 21h
-        mov dl, 0ah
+        mov dx, 0ah
         int 21h
         
-        mov dl, al ; dl-> al dl=11
-        mov ah,2
+        add bl, cl
+        sub bl, 48
+        
+        mov dl, bl
+        
+
+        
+        mov ah, 2
         int 21h
         
           
