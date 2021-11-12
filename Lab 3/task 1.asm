@@ -19,7 +19,7 @@
         ; taking input 1
         mov ah, 1
         int 21h
-        mov bl, al; al-> bl=6
+        mov bl, al; al-> bl=3
         
         ;creating carriage return and line feed
         mov ah, 2
@@ -30,10 +30,11 @@
         
         ; taking input 2
         mov ah, 1
-        int 21h
+        int 21h  ; al=1
         
         ; add two inputs
-        add al, bl; 6+5=11 al=11
+        add al, bl; 3+1=4 al=4
+        sub al, 48
         
         
         ;creating carriage return and line feed
