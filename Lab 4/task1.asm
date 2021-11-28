@@ -70,13 +70,49 @@
         mov dl, 0ah
         int 21h
         
-        ;1st input = bl
-        ;2nd input = cl
-        ;3rd input = bh 
+        ;1st input (a) = bl
+        ;2nd input (b) = cl
+        ;3rd input (c) = bh
         
         
         
+        cmp bl, cl    ;if bl(a) > cl(b)
+        jge rst_a_max
+        jmp rst_b_max ;else bl(a) < cl(b)   
         
+        
+        rst_a_max:
+            cmp bl, bh   ; if bl(a) > bh(c)
+            jge set_a
+            jmp set_c    ; else 
+        
+        
+        rst_b_max:
+            cmp cl, bh
+            jge set_b    ; if cl(b) > bh(c)
+            jmp set_c    ; else
+            
+        
+        set_a:
+            mov ah, 2
+            mov dl, bl   ;output 1st input
+            int 21h
+            jmp exit
+        
+        set_b:
+            mov ah, 2
+            mov dl, cl   ;output 2nd input
+            int 21h
+            jmp exit
+            
+        set_c:
+            mov ah, 2
+            mov dl, bh   ;output 3rd input
+            int 21h
+            jmp exit
+            
+        
+        exit:
          
         
         ; YOUR CODE ENDS HERE
