@@ -1,4 +1,4 @@
-                           .MODEL SMALL
+.MODEL SMALL
 .STACK 100
 .DATA
     MSG31 DB '31$'
