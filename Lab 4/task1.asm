@@ -4,8 +4,6 @@
 .STACK 100H  
 
 .DATA
-    ; DEFINE YOUR VARIABLES HERE
-    
     pmt1 db "1st input: $"
     pmt2 db "2nd input: $"
     pmt3 db "3rd input: $"
@@ -16,8 +14,6 @@
         
         MOV AX, @DATA
         MOV DS, AX
-        
-        ; YOUR CODE STARTS HERE
         
         ; promt 1st input message
         lea dx, pmt1
