@@ -13,7 +13,6 @@ MAIN PROC
      
      MOV AH,1 ; 
      INT 21H
-     ;SUB AL,48
      
      ;january
      cmp al, 31h ;(al == 1)
