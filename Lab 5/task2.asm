@@ -9,8 +9,8 @@
     b db 2
     c db ?
     sum db ?
-    count db 10
-    i db 0
+    count db 4
+    i db 2
 
 .CODE
     MAIN PROC
@@ -24,9 +24,9 @@
             cmp i, cl
             jg result
             mov al, a
-            sub al, 30h
+            ;sub al, 30h
             mov bl, b
-            sub bl, 30h
+            ;sub bl, 30h
             mov dl, c
             add al, bl  ;al=al+bl(a+b)
             mov bh, al  ;bh->al
@@ -35,12 +35,14 @@
         calc:
             add sum, bh
             mov al, bl  ;a=b
-            mov bl, dl  ;b=c
+            mov a, al
+            mov bl, bh  ;b=c
+            mov b, bl
             inc i
             jmp hack
             
         result:
-            mov dl, sum
+            mov dl, bh
             add dl, 30h
             mov ah, 2
             int 21h  
