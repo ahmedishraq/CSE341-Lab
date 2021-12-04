@@ -9,7 +9,7 @@
     b db 2
     c db ?
     sum db ?
-    count db 4
+    count db 10
     i db 2
 
 .CODE
