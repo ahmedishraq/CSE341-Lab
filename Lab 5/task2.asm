@@ -24,9 +24,7 @@
             cmp i, cl
             jg result
             mov al, a
-            ;sub al, 30h
             mov bl, b
-            ;sub bl, 30h
             mov dl, c
             add al, bl  ;al=al+bl(a+b)
             mov bh, al  ;bh->al
@@ -43,7 +41,6 @@
             
         result:
             mov dl, bh
-            add dl, 30h
             mov ah, 2
             int 21h  
              
