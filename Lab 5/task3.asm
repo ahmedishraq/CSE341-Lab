@@ -6,9 +6,10 @@
 .DATA
     ; DEFINE YOUR VARIABLES HERE
     
-    ;tmp dw ?
     sum dw 0 
-    ;subtrct dw ?
+    msg db "Press 1 for Division or Press 2 for Multiplication: $"
+    msg1 db "Multiplication Result: $"
+    msg2 db "Final Remainder: $"
 
 .CODE
     MAIN PROC
@@ -35,6 +36,19 @@
         ;mov tmp, ax
         ;mov cx, ax
         ;mov cx, 0h
+        
+        ;line feed & carriage
+        mov ah,2
+        mov dx, 0dh
+        int 21h
+        mov dx, 0ah
+        int 21h
+        
+        ;option chossing msg
+        lea dx, msg
+        mov ah, 9
+        int 21h
+        
         
         ;choose option for function
         mov ah, 1
@@ -69,11 +83,24 @@
             jmp multp
             
         multp_rst:
-          add sum, 30h
-          mov dx, sum
-          mov ah, 2
-          int 21h
-          jmp exit
+            ;line feed & carriage
+            mov ah,2
+            mov dx, 0dh
+            int 21h
+            mov dx, 0ah
+            int 21h
+          
+            ;result msg
+            lea dx, msg1
+            mov ah, 9
+            int 21h
+          
+            ;result calculation  
+            add sum, 30h
+            mov dx, sum
+            mov ah, 2
+            int 21h
+            jmp exit
           
         ;division method
         divd:
@@ -85,6 +112,19 @@
             jmp divd
             
         divd_rst:
+            ;line feed & carriage
+            mov ah,2
+            mov dx, 0dh
+            int 21h
+            mov dx, 0ah
+            int 21h
+          
+            ;result msg
+            lea dx, msg2
+            mov ah, 9
+            int 21h
+            
+            ;result calculation
             add bx, 30h
             mov dx, bx
             mov ah, 2
@@ -92,12 +132,8 @@
             jmp exit
             
         exit:
-        mov ax, 4c00h
-        int 21h
-            
-               
-            
-         
+            mov ax, 4c00h
+            int 21h
         
         ; YOUR CODE ENDS HERE
         
