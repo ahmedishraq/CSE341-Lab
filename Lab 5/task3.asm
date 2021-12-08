@@ -57,6 +57,8 @@
             sub bx, ax
             cmp bx, cx
             je divd_rst
+            cmp bx, ax
+            jle divd_rst
             jmp divd
             
         divd_rst:
