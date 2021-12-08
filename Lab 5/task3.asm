@@ -33,10 +33,6 @@
         sub ax, 30h
         mov cx, ax
         
-        ;mov tmp, ax
-        ;mov cx, ax
-        ;mov cx, 0h
-        
         ;line feed & carriage
         mov ah,2
         mov dx, 0dh
