@@ -32,15 +32,15 @@
         sub ax, 30h
         
         mov tmp, ax
-        mov cx, ax
-        mov bx, 0h
+        ;mov cx, ax
+        mov cx, 0h
         
         ;multiplication method
         multp:
-            cmp bx, ax
+            cmp cx, bx
             jge multp_rst
             add sum, ax
-            inc bx
+            inc cx
             jmp multp
             
         multp_rst:
