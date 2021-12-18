@@ -4,7 +4,6 @@
 .STACK 100H  
 
 .DATA
-    ; DEFINE YOUR VARIABLES HERE
     
     arr db 5 dup(?)
     
@@ -17,8 +16,6 @@
         
         MOV AX, @DATA
         MOV DS, AX
-        
-        ; YOUR CODE STARTS HERE
         
         ;enter numbers msg
         lea dx, a
@@ -91,10 +88,6 @@
                 add si, 1
                 loop print_rst  
             
-        
-         
-        
-        ; YOUR CODE ENDS HERE
         
         MOV AX, 4C00H
         INT 21H
