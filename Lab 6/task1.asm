@@ -4,9 +4,7 @@
 .STACK 100H  
 
 .DATA
-    ; DEFINE YOUR VARIABLES HERE
     s db 12 dup(?)
-    
     ;variables
     a db "Enter name: $"
     b db "Output: $"
@@ -16,8 +14,6 @@
         
         MOV AX, @DATA
         MOV DS, AX
-        
-        ; YOUR CODE STARTS HERE
         
         ;Showing enter name msg
         lea dx, a
@@ -47,21 +43,49 @@
         lea dx, b
         mov ah, 9
         int 21h
-            
-        ;printing the array elements
-        mov cx, 12
-        mov ah, 2
-        mov si, 0
         
-        show:
+        ;capital small checking loop with array
+        mov cx, 12
+        mov si, 0
+        mov ah, 2
+                
+        walk_fast:
+            cmp s[si], 41h
+            jge capital_cross_check
+            
+            ;checking space
+            cmp s[si], 20h
+            je print_rst
+            
+        capital_cross_check:
+            cmp s[si], 54h
+            jle cap_letter
+            jmp small_cross_check
+            
+        cap_letter:
+            mov s[si], 47h
+            jmp print_rst
+            
+        small_cross_check:
+            cmp s[si], 7Ah
+            jle small_letter
+            
+        small_letter:
+            mov s[si], 68h
+            jmp print_rst
+            
+        print_rst:
             mov dl, s[si]
+            mov ah, 2
             int 21h
             add si, 1
-            loop show 
         
-         
+        loop walk_fast
         
-        ; YOUR CODE ENDS HERE
+        ;exit
+        exit:
+            mov ax, 4c00h
+            int 21h
         
         MOV AX, 4C00H
         INT 21H
