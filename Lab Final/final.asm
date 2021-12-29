@@ -6,7 +6,7 @@
 .DATA
     ; DEFINE YOUR VARIABLES HERE
     
-     a db 48
+     a dw 48
 
 .CODE
     MAIN PROC
