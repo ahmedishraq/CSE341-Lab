@@ -8,7 +8,7 @@
     a dw 0
     msg1 db "Var 1 = $"
     msg2 db "Even Number! $"
-    msg3 db "Odd Number! $"
+    msg3 db "No triangle $"
     
 
 .CODE
