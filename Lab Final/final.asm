@@ -9,8 +9,7 @@
     i db 1
     j db 1
     msg1 db "Var 1 = $"
-    msg2 db "Even Number! $"
-    msg3 db "No triangle $"
+    msg2 db "No triangle $"
     
 
 .CODE
@@ -74,7 +73,6 @@
                     jle p_n_1
                     
                     inc i
-                    ;add al, 1
                     ;carriage & line feed
                     mov ah, 2
                     mov dl, 0dh
@@ -85,9 +83,11 @@
                     jg L1
                     
                 p_n_1:
+                    add al, 48
                     mov dl, al
                     mov ah, 2
                     int 21h
+                    sub al, 48
                     add al, 1
                     jmp L2 
             
@@ -101,7 +101,7 @@
             mov dl, 0ah
             int 21h
             
-            lea dx, msg3
+            lea dx, msg2
             mov ah, 9
             int 21h
             mov dx, 0
