@@ -93,13 +93,6 @@
             jmp exit
              
          odd:
-            ;carriage & line feed
-            mov ah, 2
-            mov dl, 0dh
-            int 21h
-            mov dl, 0ah
-            int 21h
-            
             lea dx, msg2
             mov ah, 9
             int 21h
