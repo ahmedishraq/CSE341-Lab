@@ -6,8 +6,7 @@
 .DATA
     ; DEFINE YOUR VARIABLES HERE
     a dw 0  
-    i db 1
-    j db 1
+    i db 0
     msg1 db "Var 1 = $"
     msg2 db "No triangle $"
     
@@ -64,7 +63,7 @@
             L1:
                 mov cl, i
                 cmp i, bl
-                mov al, 1
+                mov al, 0
                 jle L2
                 jg exit
                 
@@ -83,11 +82,11 @@
                     jg L1
                     
                 p_n_1:
-                    add al, 48
+                    add al, 49
                     mov dl, al
                     mov ah, 2
                     int 21h
-                    sub al, 48
+                    sub al, 49
                     add al, 1
                     jmp L2 
             
