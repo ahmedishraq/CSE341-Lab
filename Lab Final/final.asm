@@ -5,7 +5,9 @@
 
 .DATA
     ; DEFINE YOUR VARIABLES HERE
-    a dw 0
+    a dw 0  
+    i db 1
+    j db 1
     msg1 db "Var 1 = $"
     msg2 db "Even Number! $"
     msg3 db "No triangle $"
@@ -23,29 +25,7 @@
         mov ah, 9
         int 21h 
         mov dx, 0
-                            ;
-;        mov dl, 10
-;        mov bl, 0
-;        
-;        scan_digit:
-;            mov ah, 1h
-;            int 21h
-;            
-;            cmp al, 13  ;if press enter done with taking input
-;            je exit
-;            
-;            mov ah, 0
-;            sub al, 48  ;ascii to decimal
-;            
-;            mov cl, al
-;            mov al, bl
-;            
-;            ;mul dl
-;            
-;            add al, cl
-;            mov bl, al
-;            
-;            jmp scan_digit  
+                            ; 
 
          mov ah, 1h
          int 21h
@@ -68,25 +48,52 @@
          div ch
          
          cmp ah, 0
-         je print_1
-         jne print_2
          
-         print_1:
-            ;carriage & line feed
-            mov ah, 2
-            mov dl, 0dh
-            int 21h
-            mov dl, 0ah
-            int 21h 
+          ;carriage & line feed
+          mov ah, 2
+          mov dl, 0dh
+          int 21h
+          mov dl, 0ah
+          int 21h
+         
+         je even
+         jne odd
+         
+         even:
             
-            lea dx, msg2
-            mov ah, 9
-            int 21h 
-            mov dx, 0
+            
+            L1:
+                mov cl, i
+                cmp i, bl
+                mov al, 1
+                jle L2
+                jg exit
+                
+                L2:
+                    cmp al, cl
+                    jle p_n_1
+                    
+                    inc i
+                    ;add al, 1
+                    ;carriage & line feed
+                    mov ah, 2
+                    mov dl, 0dh
+                    int 21h
+                    mov dl, 0ah
+                    int 21h
+                    
+                    jg L1
+                    
+                p_n_1:
+                    mov dl, al
+                    mov ah, 2
+                    int 21h
+                    add al, 1
+                    jmp L2 
             
             jmp exit
              
-         print_2:
+         odd:
             ;carriage & line feed
             mov ah, 2
             mov dl, 0dh
