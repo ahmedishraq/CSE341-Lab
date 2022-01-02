@@ -7,6 +7,8 @@
     ; DEFINE YOUR VARIABLES HERE
     a dw 0  
     i db 0
+    var_1 dw 0 
+    tmp dw 0
     msg1 db "Var 1 = $"
     msg2 db "No triangle $"
     
@@ -23,7 +25,7 @@
         mov ah, 9
         int 21h 
         mov dx, 0
-                            ; 
+                             
 
          mov ah, 1h
          int 21h
@@ -32,6 +34,7 @@
          sub al, 48
          mov bx, ax
          mov a, bx   ; store the msb in a
+         mov var_1, bx
          
          mov ah, 1h
          int 21h
@@ -39,6 +42,20 @@
          mov ah, 0
          sub al, 48
          mov cl, al
+         mov tmp, ax
+         
+         
+         ;storing two digit number in var_1
+         
+         mov ax, var_1
+         mov dl, 10
+         mul dl
+         mov dx, tmp
+         
+         add ax, dx
+         mov var_1, ax
+         
+         
          
          ;checking even or odd
          mov ax, a
@@ -100,16 +117,11 @@
             
             jmp exit
             
-         
-
-        
             
         exit:
             mov ax, 4c00h
             int 21h
         
-        
-         
         
         ; YOUR CODE ENDS HERE
         
