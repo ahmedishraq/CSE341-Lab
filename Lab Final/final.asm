@@ -76,7 +76,6 @@
          
          even:
             
-            
             L1:
                 mov cl, i
                 cmp i, bl
